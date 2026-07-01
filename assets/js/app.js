@@ -403,85 +403,88 @@ async function persistCurrentState() {
 
 // Initialize the App
 document.addEventListener("DOMContentLoaded", async () => {
-  // Load local mock data if questions.js is not initialized
-  if (!window.examData) {
-    console.error("Critical: examData from questions.js not loaded! Using safe fallback.");
-    window.examData = {
-      chapterName: "الفصل الثالث: الاتزان الأيوني",
-      lessonName: "الدرس: الحموض والقواعد",
-      sourceInfo: "كيمياء • الفصل الثالث",
-      totalQuestions: 5,
-      questions: [
-        {
-          id: 1,
-          type: "theory",
-          metadata: {
-            year: "2023",
-            term: "الدور الأول",
-            category: "وزاري"
-          },
-          text: "عرّف حمض أرهينيوس واذكر مثالاً عليه موضحاً سلوكه الحمضي بمعادلة كيميائية مفسرة.",
-          modelAnswer: {
-            theoryText: "حمض أرهينيوس هو المادة التي تتفكك في المحلول المائي لتعطي أيون الهيدروجين المائي <span class='ltr-text font-mono'>H⁺</span>.<br>مثال على ذلك تفكك حمض الهيدروكلوريك (<span class='ltr-text font-mono'>HCl</span>) في الماء."
+  const contentArea = document.getElementById("main-content-area");
+
+  try {
+    // Confirm that lesson data exists
+    if (!window.examData) {
+      throw new Error("Missing examData");
+    }
+
+    await loadPersistedState();
+    render();
+
+    // Initialize and handle theme (Dark/Light mode)
+    const initTheme = () => {
+      const htmlEl = document.documentElement;
+      const toggleBtn = document.getElementById("nav-dark-toggle");
+      const toggleIcon = document.getElementById("theme-toggle-icon");
+      const toggleText = document.getElementById("theme-toggle-text");
+      const isDark = localStorage.getItem("theme-dark") === "true";
+
+      function applyTheme(dark) {
+        if (dark) {
+          htmlEl.classList.add("dark");
+          localStorage.setItem("theme-dark", "true");
+          if (toggleText) toggleText.textContent = "الوضع المضيء";
+          if (toggleIcon) {
+            // Sun SVG
+            toggleIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M6.75 6.75l1.59 1.59M15.66 15.66l1.59 1.59M3 12h2.25m13.5 0H21M6.75 17.25l1.59-1.59M15.66 8.25l1.59-1.59M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />`;
+          }
+        } else {
+          htmlEl.classList.remove("dark");
+          localStorage.setItem("theme-dark", "false");
+          if (toggleText) toggleText.textContent = "الوضع الليلي";
+          if (toggleIcon) {
+            // Moon SVG
+            toggleIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />`;
           }
         }
-      ]
-    };
-  }
-
-  await loadPersistedState();
-  render();
-
-  // Initialize and handle theme (Dark/Light mode)
-  const initTheme = () => {
-    const htmlEl = document.documentElement;
-    const toggleBtn = document.getElementById("nav-dark-toggle");
-    const toggleIcon = document.getElementById("theme-toggle-icon");
-    const toggleText = document.getElementById("theme-toggle-text");
-    const isDark = localStorage.getItem("theme-dark") === "true";
-
-    function applyTheme(dark) {
-      if (dark) {
-        htmlEl.classList.add("dark");
-        localStorage.setItem("theme-dark", "true");
-        if (toggleText) toggleText.textContent = "الوضع المضيء";
-        if (toggleIcon) {
-          // Sun SVG
-          toggleIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M6.75 6.75l1.59 1.59M15.66 15.66l1.59 1.59M3 12h2.25m13.5 0H21M6.75 17.25l1.59-1.59M15.66 8.25l1.59-1.59M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />`;
-        }
-      } else {
-        htmlEl.classList.remove("dark");
-        localStorage.setItem("theme-dark", "false");
-        if (toggleText) toggleText.textContent = "الوضع الليلي";
-        if (toggleIcon) {
-          // Moon SVG
-          toggleIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />`;
-        }
       }
-    }
 
-    applyTheme(isDark);
+      applyTheme(isDark);
 
-    if (toggleBtn) {
-      toggleBtn.addEventListener("click", (e) => {
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const currentlyDark = htmlEl.classList.contains("dark");
+          applyTheme(!currentlyDark);
+        });
+      }
+    };
+
+    initTheme();
+
+    // Attach home button navigation click handler
+    const navHomeBtn = document.getElementById("nav-home-btn");
+    if (navHomeBtn) {
+      navHomeBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        const currentlyDark = htmlEl.classList.contains("dark");
-        applyTheme(!currentlyDark);
+        if (state.currentScreen !== "home") {
+          state.currentScreen = "home";
+          persistCurrentState();
+          render();
+        }
       });
     }
-  };
 
-  initTheme();
-
-  // Attach home button navigation click handler
-  document.getElementById("nav-home-btn").addEventListener("click", (e) => {
-    e.preventDefault();
-    if (state.currentScreen !== "home") {
-      state.currentScreen = "home";
-      persistCurrentState();
-      render();
+  } catch (error) {
+    console.error("Initialization error:", error);
+    if (contentArea) {
+      contentArea.innerHTML = `
+        <div class="flex flex-col items-center justify-center py-20 px-4 text-center gap-4 bg-white rounded-3xl card-shadow border border-red-200 w-full">
+          <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center text-red-500 mb-2">
+            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+            </svg>
+          </div>
+          <p class="text-base md:text-lg text-red-600 font-extrabold leading-relaxed">
+            تعذر تحميل بيانات الدرس. يرجى إعادة نشر المشروع بعد التحقق من الملفات.
+          </p>
+        </div>
+      `;
     }
-  });
+  }
 });
 
 // Primary render router

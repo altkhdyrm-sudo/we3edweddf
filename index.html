@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تطبيق مدرسي - قالب الاختبار المدرسي التفاعلي</title>
+  <!-- Tailwind CSS CDN for client-side evaluation -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primaryPurple: '#5B2596',
+            deepPurple: '#3E176D',
+            mediumPurple: '#7641B4',
+            softLavender: '#E9E6FA',
+            pageBg: '#F5F3FF',
+            whiteCard: '#FFFFFF',
+            mainText: '#1D2433',
+            mutedText: '#687084',
+            borders: '#D9D3F0',
+          },
+          fontFamily: {
+            sans: ['Cairo', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body class="bg-[#F5F3FF] text-[#1D2433] min-h-full flex flex-col font-sans select-none antialiased">
+  
+  <!-- REUSABLE MASTER HEADER -->
+  <header class="bg-white border-b border-[#D9D3F0] sticky top-0 z-50 py-3 px-4 md:px-8 shadow-sm" dir="ltr">
+    <div class="max-w-4xl mx-auto flex justify-between items-center w-full">
+      
+      <!-- LEFT BLOCK: Navigation (الرئيسية | الوضع الليلي) -->
+      <div class="flex items-center gap-1.5 md:gap-3" dir="ltr">
+        <!-- الرئيسية Button -->
+        <button type="button" id="nav-home-btn" class="text-sm md:text-base font-bold text-[#687084] hover:text-[#5B2596] transition-all-custom flex items-center gap-1.5 py-1.5 px-3 rounded-xl hover:bg-[#E9E6FA] cursor-pointer bg-transparent border-0 focus:outline-none shrink-0" dir="rtl">
+          <svg class="w-5 h-5 stroke-[#687084]" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+          </svg>
+          <span class="hidden sm:inline">الرئيسية</span>
+        </button>
+
+        <!-- Divider -->
+        <span class="text-gray-300 select-none font-light shrink-0">|</span>
+
+        <!-- الوضع الليلي Button -->
+        <button type="button" id="nav-dark-toggle" class="text-sm md:text-base font-bold text-[#687084] hover:text-[#5B2596] transition-all-custom flex items-center gap-1.5 py-1.5 px-3 rounded-xl hover:bg-[#E9E6FA] cursor-pointer bg-transparent border-0 focus:outline-none shrink-0" dir="rtl">
+          <svg id="theme-toggle-icon" class="w-5 h-5 stroke-[#687084]" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+          </svg>
+          <span id="theme-toggle-text">الوضع الليلي</span>
+        </button>
+      </div>
+
+      <!-- RIGHT BLOCK: Logo & Brand -->
+      <div class="flex items-center gap-3 shrink-0" dir="ltr">
+        <span class="text-base md:text-lg font-extrabold text-[#5B2596] tracking-tight leading-none select-none" dir="rtl">تطبيق مدرسي</span>
+        <img id="header-logo-img" src="/src/assets/images/madrasati_logo_1782941884715.jpg" alt="شعار مدرسي" class="h-12 w-auto object-contain" referrerPolicy="no-referrer">
+      </div>
+
+    </div>
+  </header>
+
+  <!-- CONTENT CONTAINER -->
+  <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-6 md:py-10 flex flex-col justify-start">
+    <div id="main-content-area" class="w-full flex-grow flex flex-col justify-start">
+      <!-- Dynamic views (Home, Question, End) loaded here by app.js -->
+      <div class="flex flex-col items-center justify-center py-24 gap-4">
+        <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#E9E6FA] border-t-[#5B2596]"></div>
+        <p class="text-sm text-[#687084] font-medium">جاري تحميل قالب الدرس...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-4 border-t border-[#D9D3F0] text-center text-xs text-[#687084] bg-white">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
+      <p class="font-medium">تأكد من استقرار اتصال الإنترنت قبل البدء</p>
+      <p class="text-[10px] text-[#687084]/60">© ٢٠٢٦ قالب مَدرَسِي التفاعلي. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <!-- MODULE SCRIPTS -->
+  <script src="/assets/js/questions.js"></script>
+  <script src="/assets/js/app.js"></script>
+</body>
+</html>

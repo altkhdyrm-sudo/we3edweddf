@@ -4,18 +4,20 @@
  */
 
 // Reusable dynamic data structure for the chemistry lesson.
-// Exact 38 source questions from الفصل الأول - القسم الأول.
+// Exact 39 source questions from الفصل الأول - القسم الأول - V3.
 const examData = {
   chapterName: "الفصل الأول",
   lessonName: "القسم الأول",
-  sourceInfo: "عدد الأسئلة: 38",
-  totalQuestions: 38,
+  sourceInfo: "39 سؤالاً",
+  totalQuestions: 39,
+  lessonStorageId: "chemistry-chapter-1-section-1-v3",
   questions: [
     {
       id: 1,
       type: "theory",
       metadata: {
-        page: "1"
+        page: "1",
+        occurrence: "2014/1 (أسئلة النازحين) | 2018/2 (تطبيقي)"
       },
       text: "عدّد أهم الظواهر التي يفسرها علم الثرموداينمك.",
       modelAnswer: {
@@ -26,7 +28,8 @@ const examData = {
       id: 2,
       type: "theory",
       metadata: {
-        page: "1"
+        page: "1",
+        occurrence: "2024/2 | 2024/3 | 2024/3 (محاولات)"
       },
       text: "يفسر علم الثرموداينمك ظواهر مهمة عديدة، عدّدها.",
       modelAnswer: {
@@ -37,7 +40,8 @@ const examData = {
       id: 3,
       type: "theory",
       metadata: {
-        page: "1"
+        page: "1",
+        occurrence: "2019/تمهيدي (تطبيقي) | 2023/1 (أحيائي)"
       },
       text: "عرّف القانون الأول للثرموداينمك.",
       modelAnswer: {
@@ -48,7 +52,8 @@ const examData = {
       id: 4,
       type: "theory",
       metadata: {
-        page: "1"
+        page: "1",
+        occurrence: "2022/أحيائي (تطبيقي) | 2023/1 (تطبيقي)"
       },
       text: "الطاقة الكامنة هي ............، والطاقة الحركية هي ............",
       modelAnswer: {
@@ -59,7 +64,8 @@ const examData = {
       id: 5,
       type: "theory",
       metadata: {
-        page: "1"
+        page: "1",
+        occurrence: "2013/2 (تمهيدي) | 2017/تمهيدي (تطبيقي) | 2023/2 (أحيائي)"
       },
       text: "عرّف النظام المفتوح.",
       modelAnswer: {
@@ -70,7 +76,8 @@ const examData = {
       id: 6,
       type: "theory",
       metadata: {
-        page: "1"
+        page: "1",
+        occurrence: "2013/1"
       },
       text: "عرّف النظام المغلق.",
       modelAnswer: {
@@ -81,7 +88,8 @@ const examData = {
       id: 7,
       type: "theory",
       metadata: {
-        page: "1"
+        page: "1",
+        occurrence: "2016/1 | 2017/1 (خارج القطر) | 2017/2 | 2018/3 | 2020/2"
       },
       text: "عرّف النظام المعزول.",
       modelAnswer: {
@@ -92,7 +100,8 @@ const examData = {
       id: 8,
       type: "theory",
       metadata: {
-        page: "1"
+        page: "1",
+        occurrence: "2014/1 (أسئلة خارج القطر) | 2017/3"
       },
       text: "إذا كانت حدود النظام تسمح بتبادل الطاقة فقط ولا تسمح بتغيير كمية مادة النظام يسمى نظاماً:",
       choices: ["مفتوحاً", "معزولاً", "مغلقاً"],
@@ -104,7 +113,8 @@ const examData = {
       id: 9,
       type: "theory",
       metadata: {
-        page: "1"
+        page: "1",
+        occurrence: "2014/1 | 2014/2"
       },
       text: "إذا كانت حدود النظام لا تسمح بتبادل المادة والطاقة مع المحيط يدعى النظام:",
       choices: ["المغلق", "المعزول", "المفتوح"],
@@ -116,7 +126,8 @@ const examData = {
       id: 10,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2015/2 | 2023/3 (تطبيقي)"
       },
       text: "النظام المعزول هو ذلك النظام الذي لا تسمح حدوده بتبادل ............ و............ مع المحيط.",
       modelAnswer: {
@@ -127,7 +138,8 @@ const examData = {
       id: 11,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2020/1 | 2023/3 (تطبيقي)"
       },
       text: "خواص النظام هي المتغيرات الفيزيائية للنظام التي يمكن ملاحظتها أو قياسها مثل ............ أو ............ الموجودة في النظام، والحالة الفيزيائية للمواد والحجم والضغط ودرجة الحرارة.",
       modelAnswer: {
@@ -138,7 +150,8 @@ const examData = {
       id: 12,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2022/2 (تطبيقي)"
       },
       text: "يقسم النظام إلى ثلاثة أنواع هي ............ و............ و............",
       modelAnswer: {
@@ -149,7 +162,8 @@ const examData = {
       id: 13,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2024/3"
       },
       text: "قارن بين النظام المفتوح والنظام المغلق.",
       modelAnswer: {
@@ -160,7 +174,8 @@ const examData = {
       id: 14,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2017/1 (تطبيقي) | 2019/تمهيدي | 2023/2 (تطبيقي)"
       },
       text: "ما الفرق بين النظام المفتوح والنظام المغلق؟",
       modelAnswer: {
@@ -171,7 +186,8 @@ const examData = {
       id: 15,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2018/تمهيدي"
       },
       text: "عدّد أنواع النظام مع مثال لكل نوع.",
       modelAnswer: {
@@ -182,7 +198,8 @@ const examData = {
       id: 16,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2022/تمهيدي (تطبيقي)"
       },
       text: "ما أقسام النظام؟ عدّدها فقط.",
       modelAnswer: {
@@ -193,7 +210,8 @@ const examData = {
       id: 17,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2015/ت (خارج القطر) | 2017/2 (خارج القطر) | 2022/1 (تطبيقي) | 2023/ت (تطبيقي)"
       },
       text: "عرّف السعة الحرارية.",
       modelAnswer: {
@@ -204,7 +222,8 @@ const examData = {
       id: 18,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2014/1 | 2018/1 (تطبيقي) | 2022/2 (تطبيقي)"
       },
       text: "عرّف الحرارة النوعية.",
       modelAnswer: {
@@ -215,7 +234,8 @@ const examData = {
       id: 19,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2017/1 (أسئلة الموصل) | 2018/تمهيدي | 2018/2 (تطبيقي) | 2020/تمهيدي (تطبيقي)"
       },
       text: "ما الفرق بين الحرارة النوعية والسعة الحرارية؟ وما هي وحدات هاتين الكميتين؟",
       modelAnswer: {
@@ -226,7 +246,8 @@ const examData = {
       id: 20,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2022/2 (أحيائي)"
       },
       text: "ما الفرق بين السعة الحرارية والحرارة النوعية؟ وما وحدات كل منهما؟",
       modelAnswer: {
@@ -237,7 +258,8 @@ const examData = {
       id: 21,
       type: "theory",
       metadata: {
-        page: "2"
+        page: "2",
+        occurrence: "2024/2 (محاولات)"
       },
       text: "قارن بين الحرارة النوعية والسعة الحرارية مع كتابة العلاقة الرياضية التي تربط بينهما.",
       modelAnswer: {
@@ -248,7 +270,8 @@ const examData = {
       id: 22,
       type: "theory",
       metadata: {
-        page: "3"
+        page: "3",
+        occurrence: "2014/1 (أسئلة النازحين)"
       },
       text: "إن كمية الحرارة اللازمة لرفع درجة حرارة كتلة غرام واحد من مادة درجة سليزية هي:",
       choices: ["الحرارة المنبعثة", "السعة الحرارية", "الحرارة النوعية"],
@@ -260,7 +283,8 @@ const examData = {
       id: 23,
       type: "theory",
       metadata: {
-        page: "3"
+        page: "3",
+        occurrence: "2025/تمهيدي"
       },
       text: "الحرارة النوعية من الخواص ............، وذلك لأنها ............ على كمية المادة الموجودة في النظام.",
       modelAnswer: {
@@ -271,7 +295,8 @@ const examData = {
       id: 24,
       type: "theory",
       metadata: {
-        page: "3"
+        page: "3",
+        occurrence: "2025/2"
       },
       text: "الحرارة النوعية من الخواص ............، بينما السعة الحرارية فإنها من الخواص ............",
       modelAnswer: {
@@ -282,7 +307,8 @@ const examData = {
       id: 25,
       type: "calculation",
       metadata: {
-        page: "3"
+        page: "3",
+        occurrence: "2016/2 (أسئلة خارج القطر)"
       },
       text: "تغيرت درجة حرارة قطعة من المغنيسيوم كتلتها 10 g من 25 °C إلى 45 °C مع اكتساب حرارة مقدارها 205 J. احسب الحرارة النوعية للمغنيسيوم.",
       modelAnswer: {
@@ -308,7 +334,8 @@ const examData = {
       id: 26,
       type: "calculation",
       metadata: {
-        page: "3"
+        page: "3",
+        occurrence: "2013/تمهيدي"
       },
       text: "ما مقدار الحرارة الناتجة من تسخين قطعة من الحديد كتلتها 870 g من 5 °C إلى 95 °C، علماً أن الحرارة النوعية للحديد تساوي 0.45 J/(g·°C)؟",
       modelAnswer: {
@@ -327,14 +354,15 @@ const examData = {
           "\\( q = 35235\\,\\mathrm{J} \\)",
           "\\( q\\,\\mathrm{(kJ)} = \\frac{35235}{1000} \\)"
         ],
-        finalAnswer: "\\( q = 35.235\\,\\mathrm{kJ} \\)"
+        finalAnswer: "\\( q = 35.2\\,\\mathrm{kJ} \\)"
       }
     },
     {
       id: 27,
       type: "calculation",
       metadata: {
-        page: "4"
+        page: "4",
+        occurrence: "2014/1 (أسئلة النازحين)"
       },
       text: "احسب الحرارة النوعية للزئبق عند تبريد قطعة مقدارها 0.35 kg من 77 °C إلى 12 °C، إذا علمت أن كمية الحرارة المنبعثة تساوي −3185 J.",
       modelAnswer: {
@@ -346,7 +374,7 @@ const examData = {
         ],
         law: "\\( q = S \\times m \\times \\Delta T \\)",
         substitution: [
-          "\\( m\\,\\mathrm{(g)} = m\\,\\mathrm{(kg)} \\times 1000 = 0.35 \\times 1000 = 350\\,\\mathrm{g} \\)",
+          "\\( m\\,\\mathrm{(g)} = 0.35 \\times 1000 = 350\\,\\mathrm{g} \\)",
           "\\( \\Delta T = T_f - T_i = 12 - 77 = -65\\,^\\circ\\mathrm{C} \\)",
           "\\( -3185 = S \\times 350 \\times (-65) \\)"
         ],
@@ -361,7 +389,8 @@ const examData = {
       id: 28,
       type: "calculation",
       metadata: {
-        page: "4"
+        page: "4",
+        occurrence: "2017/2"
       },
       text: "سخنت عينة من مادة مجهولة كتلتها 150 g، فتغيرت درجة الحرارة بمقدار 20 °C، مما أدى إلى امتصاص حرارة مقدارها 5400 J. احسب الحرارة النوعية لهذه المادة.",
       modelAnswer: {
@@ -385,7 +414,8 @@ const examData = {
       id: 29,
       type: "calculation",
       metadata: {
-        page: "4"
+        page: "4",
+        occurrence: "2013 (خارج القطر)"
       },
       text: "تغيرت درجة حرارة قطعة من المغنيسيوم كتلتها 10 g من 25 °C إلى 45 °C مع اكتساب حرارة مقدارها 114 J. احسب الحرارة النوعية لقطعة المغنيسيوم.",
       modelAnswer: {
@@ -411,7 +441,8 @@ const examData = {
       id: 30,
       type: "calculation",
       metadata: {
-        page: "5"
+        page: "5",
+        occurrence: "2018/تمهيدي"
       },
       text: "تغيرت درجة حرارة قطعة من المغنيسيوم كتلتها 15 g من 20 °C إلى 33.3 °C مع اكتسابها حرارة مقدارها 205 J. احسب الحرارة النوعية للمغنيسيوم.",
       modelAnswer: {
@@ -437,7 +468,8 @@ const examData = {
       id: 31,
       type: "calculation",
       metadata: {
-        page: "5"
+        page: "5",
+        occurrence: "2019/3 (تطبيقي)"
       },
       text: "سخنت عينة من مادة مجهولة كتلتها 100 g من درجة حرارة 25 °C إلى 55 °C، مما أدى إلى امتصاص حرارة مقدارها 6300 J. احسب الحرارة النوعية لهذه المادة.",
       modelAnswer: {
@@ -463,7 +495,8 @@ const examData = {
       id: 32,
       type: "calculation",
       metadata: {
-        page: "5"
+        page: "5",
+        occurrence: "2018/تمهيدي (تطبيقي)"
       },
       text: "احسب كمية الحرارة المنبعثة بوحدات kJ من 350 g زئبق عند تبريدها من 70 °C إلى 20 °C، إذا علمت أن الحرارة النوعية للزئبق تساوي 0.14 J/(g·°C).",
       modelAnswer: {
@@ -489,7 +522,8 @@ const examData = {
       id: 33,
       type: "calculation",
       metadata: {
-        page: "5"
+        page: "5",
+        occurrence: "2020/تمهيدي (أحيائي)"
       },
       text: "تم رفع درجة حرارة 32 g من الإيثانول من 25 °C إلى 83 °C. احسب كمية الحرارة الممتصة بواسطة الإيثانول إذا علمت أن الحرارة النوعية للإيثانول تساوي 2.44 J/(g·°C).",
       modelAnswer: {
@@ -514,7 +548,35 @@ const examData = {
       id: 34,
       type: "calculation",
       metadata: {
-        page: "6"
+        page: "5",
+        occurrence: "2019/3"
+      },
+      text: "احسب كمية الحرارة المنبعثة بوحدات kJ من 350 g زئبق عند تبريدها من 80 °C إلى 15 °C، إذا علمت أن الحرارة النوعية للزئبق تساوي 0.14 J/(g·°C).",
+      modelAnswer: {
+        given: [
+          "\\( m = 350\\,\\mathrm{g} \\)",
+          "\\( T_i = 80\\,^\\circ\\mathrm{C} \\)",
+          "\\( T_f = 15\\,^\\circ\\mathrm{C} \\)",
+          "\\( S = 0.14\\,\\mathrm{J/(g\\cdot^\\circ C)} \\)"
+        ],
+        law: "\\( q = S \\times m \\times \\Delta T \\)",
+        substitution: [
+          "\\( \\Delta T = T_f - T_i = 15 - 80 = -65\\,^\\circ\\mathrm{C} \\)",
+          "\\( q = 0.14 \\times 350 \\times (-65) \\)"
+        ],
+        steps: [
+          "\\( q = -3185\\,\\mathrm{J} \\)",
+          "\\( q\\,\\mathrm{(kJ)} = \\frac{-3185}{1000} \\)"
+        ],
+        finalAnswer: "\\( q = -3.185\\,\\mathrm{kJ} \\)"
+      }
+    },
+    {
+      id: 35,
+      type: "calculation",
+      metadata: {
+        page: "6",
+        occurrence: "2021/1 (تطبيقي)"
       },
       text: "سخنت قطعة من الحديد كتلتها 550 g فتغيرت درجة حرارتها بمقدار 80 °C. ما مقدار الحرارة الناتجة نتيجة التسخين؟ علماً أن الحرارة النوعية للحديد تساوي 0.45 J/(g·°C).",
       modelAnswer: {
@@ -534,10 +596,11 @@ const examData = {
       }
     },
     {
-      id: 35,
+      id: 36,
       type: "calculation",
       metadata: {
-        page: "6"
+        page: "6",
+        occurrence: "2020/1 (تطبيقي)"
       },
       text: "احسب كمية الحرارة المنبعثة بوحدات kJ من 350 g زئبق عند تبريدها من 77 °C إلى 12 °C، علماً أن الحرارة النوعية للزئبق تساوي 0.14 J/(g·°C).",
       modelAnswer: {
@@ -560,10 +623,11 @@ const examData = {
       }
     },
     {
-      id: 36,
+      id: 37,
       type: "calculation",
       metadata: {
-        page: "6"
+        page: "6",
+        occurrence: "2022/تمهيدي (تطبيقي)"
       },
       text: "5.4 g من حبيبات ذهب امتصت 300 J من الحرارة عند تسخينها. فإذا علمت أن درجة الحرارة الابتدائية كانت 35 °C، احسب درجة الحرارة النهائية التي سخنت إليها، إذا علمت أن الحرارة النوعية للذهب تساوي 0.13 J/(g·°C).",
       modelAnswer: {
@@ -587,10 +651,11 @@ const examData = {
       }
     },
     {
-      id: 37,
+      id: 38,
       type: "calculation",
       metadata: {
-        page: "6"
+        page: "6",
+        occurrence: "2021/تمهيدي (أحيائي)"
       },
       text: "تغيرت درجة حرارة قطعة من المغنيسيوم كتلتها 20 g من 15 °C إلى 55 °C مع اكتسابها حرارة مقدارها 200 J. احسب الحرارة النوعية لقطعة المغنيسيوم.",
       modelAnswer: {
@@ -613,10 +678,11 @@ const examData = {
       }
     },
     {
-      id: 38,
+      id: 39,
       type: "calculation",
       metadata: {
-        page: "6"
+        page: "6",
+        occurrence: "2023/1 (أحيائي)"
       },
       text: "تغيرت درجة حرارة قطعة من المغنيسيوم كتلتها 8 g من 20 °C إلى 45 °C مع اكتساب حرارة مقدارها 205 J. احسب الحرارة النوعية لقطعة المغنيسيوم.",
       modelAnswer: {

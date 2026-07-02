@@ -141,6 +141,13 @@ async function getFromDB(key) {
   return memStorage[key] !== undefined ? memStorage[key] : null;
 }
 
+function getStorageId() {
+  if (window.examData && window.examData.lessonStorageId) {
+    return window.examData.lessonStorageId;
+  }
+  return "chemistry-chapter-1-section-1-v1";
+}
+
 async function clearDB() {
   try {
     const db = await openDB();
@@ -159,8 +166,9 @@ async function clearDB() {
 
   if (useLocalStorage) {
     try {
-      localStorage.removeItem(`${DB_NAME}_userProgress_chemistry-chapter-1-section-1-v1`);
-      localStorage.removeItem(`${DB_NAME}_userMeta_chemistry-chapter-1-section-1-v1`);
+      const storageId = getStorageId();
+      localStorage.removeItem(`${DB_NAME}_userProgress_${storageId}`);
+      localStorage.removeItem(`${DB_NAME}_userMeta_${storageId}`);
     } catch (err) {
       console.warn("LocalStorage Clear Failed:", err);
     }
@@ -255,8 +263,9 @@ function areAllQuestionsComplete() {
 
 // Check and load saved state from IndexedDB
 async function loadPersistedState() {
-  const savedProgress = await getFromDB("userProgress_chemistry-chapter-1-section-1-v1");
-  const savedMeta = await getFromDB("userMeta_chemistry-chapter-1-section-1-v1");
+  const storageId = getStorageId();
+  const savedProgress = await getFromDB(`userProgress_${storageId}`);
+  const savedMeta = await getFromDB(`userMeta_${storageId}`);
 
   if (savedProgress) {
     state.progress = savedProgress;
@@ -393,8 +402,9 @@ function createEmptyQuestionProgress(q) {
 
 // Persist both current screens/indexes and progress state
 async function persistCurrentState() {
-  await saveToDB("userProgress_chemistry-chapter-1-section-1-v1", state.progress);
-  await saveToDB("userMeta_chemistry-chapter-1-section-1-v1", {
+  const storageId = getStorageId();
+  await saveToDB(`userProgress_${storageId}`, state.progress);
+  await saveToDB(`userMeta_${storageId}`, {
     currentScreen: state.currentScreen,
     currentQuestionIndex: state.currentQuestionIndex,
     activeRequirementId: state.activeRequirementId
@@ -869,19 +879,20 @@ function renderQuestionScreen(container) {
   const qProg = state.progress[q.id];
 
   // Fix metadata generation so every field appears once with clean Arabic formatting
-  const metaParts = [];
-  if (q.metadata && q.metadata.page) {
-    metaParts.push(`الصفحة: ${q.metadata.page}`);
+  let metadataHtml = "";
+  if (q.metadata && q.metadata.occurrence) {
+    const rawOccurrence = q.metadata.occurrence;
+    const cleanOccurrence = rawOccurrence.split('|').map(s => s.trim()).join(' - ');
+    metadataHtml = `<span style="unicode-bidi: plaintext; direction: rtl; text-align: right;">سنوات الامتحان: ${cleanOccurrence}</span>`;
+  } else if (q.metadata) {
+    const fallbackParts = [];
+    if (q.metadata.year) fallbackParts.push(q.metadata.year);
+    if (q.metadata.term) fallbackParts.push(q.metadata.term);
+    const cleanOccurrence = fallbackParts.join(' - ');
+    if (cleanOccurrence) {
+      metadataHtml = `<span style="unicode-bidi: plaintext; direction: rtl; text-align: right;">سنوات الامتحان: ${cleanOccurrence}</span>`;
+    }
   }
-  if (q.metadata && q.metadata.year) {
-    metaParts.push(`السنة: ${q.metadata.year}`);
-  }
-  if (q.metadata && q.metadata.term) {
-    // Strip "الدور" prefix if it exists to avoid repetition
-    const cleanTerm = q.metadata.term.replace(/^الدور\s+/, "").trim();
-    metaParts.push(`الدور: ${cleanTerm}`);
-  }
-  const metadataHtml = metaParts.join(' <span class="mx-1.5 text-gray-300">|</span> ');
 
   // Helper to determine the consolidated state of a question
   const getQuestionStateLabel = (questionId) => {
